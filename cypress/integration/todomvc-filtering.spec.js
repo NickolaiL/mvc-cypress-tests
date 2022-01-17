@@ -1,12 +1,18 @@
 /// <reference types="cypress" />
 
+import {
+    navigate, 
+    addTodo, 
+} from "../page-objects/todo-page"
+
 describe('Todo MVC filtering', () => {
+
     beforeEach( () => {
-        cy.visit('http://todomvc-app-for-testing.surge.sh')
-        cy.get('.new-todo').type('First Todo item{enter}')
-        cy.get('.new-todo').type('Second Todo item{enter}')
+        navigate()
+        addTodo("First Todo item")
+        addTodo("Second Todo item")
         cy.get('.todo-list li:nth-child(2) .toggle').click()
-        cy.get('.new-todo').type('Third Todo item{enter}')
+        addTodo("Third Todo item")
     })
     it('Showing all elements ', () => {
         cy.get('.filters').contains('All').click()
