@@ -2,7 +2,12 @@
 
 import {
     navigate, 
-    addTodo, 
+    addTodo,
+    toggleTodo,
+    showAllTodos,
+    showOnlyCompletedTodos,
+    showOnlyActiveTodos,
+    validateNumberOfTodosShown 
 } from "../page-objects/todo-page"
 
 describe('Todo MVC filtering', () => {
@@ -11,21 +16,21 @@ describe('Todo MVC filtering', () => {
         navigate()
         addTodo("First Todo item")
         addTodo("Second Todo item")
-        cy.get('.todo-list li:nth-child(2) .toggle').click()
+        toggleTodo(1)
         addTodo("Third Todo item")
     })
     it('Showing all elements ', () => {
-        cy.get('.filters').contains('All').click()
-        cy.get('.todo-list li').should('have.length', 3)
-    })
-
-    it('Showing completed elements ', () => {
-        cy.get('.filters').contains('Active').click()
-        cy.get('.todo-list li').should('have.length', 2)
+        showAllTodos()
+        validateNumberOfTodosShown(3)
     })
 
     it('Showing active elements ', () => {
-        cy.get('.filters').contains('Completed').click()
-        cy.get('.todo-list li').should('have.length', 1)
+        showOnlyActiveTodos()
+        validateNumberOfTodosShown(2)
+    })
+
+    it('Showing completec elements ', () => {
+        showOnlyCompletedTodos()
+        validateNumberOfTodosShown(1)
     })
 })
