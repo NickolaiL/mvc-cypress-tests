@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+      docker {
+      image 'cypress/base:10'
+    }
+  }
 
   stages {
     stage('run test') {
@@ -8,7 +12,7 @@ pipeline {
       }
 
       steps {
-        sh 'npm install'
+        sh 'npm ci'
         sh "npm run cypress --record "
       }
     }
