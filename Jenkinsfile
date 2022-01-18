@@ -11,7 +11,7 @@ pipeline {
 
       steps {
         sh 'npm ci'
-        sh "npm run cypress --record"
+        sh "npm cypress run --record"
       }
     }
   }
