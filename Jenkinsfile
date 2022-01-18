@@ -1,6 +1,5 @@
 pipeline {
   agent any
-  }
 
   stages {
     stage('run test') {
@@ -10,7 +9,7 @@ pipeline {
 
       steps {
         sh 'npm ci'
-        sh "npm run cypress --record "
+        sh "npm run cypress --record"
       }
     }
   }
