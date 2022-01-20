@@ -29,7 +29,7 @@ describe('Todo MVC filtering', () => {
         validateNumberOfTodosShown(2)
     })
 
-    it('Showing completec elements ', () => {
+    it('Showing completed elements ', () => {
         showOnlyCompletedTodos()
         validateNumberOfTodosShown(1)
     })
