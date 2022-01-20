@@ -15,7 +15,6 @@ describe('Todo MVC actions', () => {
         navigate()
         addTodo("New Todo item")
     })
-    afterEach(() => cy.eyesClose())
 
     it('Should add a new todo item', () => {
         validateTodoText(0, 'New Todo item')
